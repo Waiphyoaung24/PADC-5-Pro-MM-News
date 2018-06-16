@@ -101,7 +101,10 @@ public class NewsVO {
     }
 
     public String getPublicationId() {
-        return publicationId;
+        if (publication == null) {
+            return publication.getPublicationId();
+        }
+        return null;
     }
 
     public void setPublicationId(String publicationId) {

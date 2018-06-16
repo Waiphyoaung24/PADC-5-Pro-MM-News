@@ -24,17 +24,21 @@ import com.padcmyanmar.sfc.data.vo.SentToVO;
 
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "PADC-MM-News.DB";
+    private static final String DB_NAME = "PADC-MM-News-1.DB";
 
     private static AppDatabase INSTANCE;
 
     public abstract NewsDAO newsDAO();
+    public abstract PublicationDAO publicationDAO();
+    public abstract ActedUserDAO actedUserDAO();
+    public abstract CommentActionDAO commentActionDAO();
+    public abstract FavoriteActionDAO favoriteActionDAO();
+    public abstract SentToDAO sentToDAO();
 
     public static AppDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DB_NAME)
-                            .allowMainThreadQueries()
                             .build();
         }
         return INSTANCE;
